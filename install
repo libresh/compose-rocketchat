@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+set -u
+set -x
+
+echo "ROOT_URL=https://${URL}" >> .env
+echo "MAIL_URL=smtp://${MAIL_USER}:${MAIL_PASS}@${MAIL_HOST}:${MAIL_PORT}/" >> .env
+

@@ -9,7 +9,7 @@ Modify `docker-compose.yml` `ROOT_URL` value to match your URL.
 And then:
 
 ```bash
-./RUN
+docker-compose up
 ```
 
 And all the data will be located under the `./data` folder.
