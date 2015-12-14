@@ -1,11 +1,11 @@
 db:
   image: mongo
   volumes:
-    - data/runtime/db:/data/db
-    - data/dump:/dump
+    - ./data/runtime/db:/data/db
+    - ./data/dump:/dump
   command: mongod --smallfiles
-web:
-  image: rocket.chat
+app:
+  image: "rocket.chat"
   env_file:
     - ./.env
   environment:
@@ -13,4 +13,4 @@ web:
   links:
     - db:db
   volumes:
-    - logs:/home/app/logs
+    - ./logs:/home/app/logs
