@@ -14,6 +14,7 @@ app:
     - db:db
   volumes:
     - ./logs:/home/app/logs
+    - ./data/uploads:/app/uploads
 web:
   image: nginx
   links:
