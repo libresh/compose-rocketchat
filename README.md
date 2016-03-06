@@ -1,4 +1,4 @@
-# Rocker.Chat
+# Rocket.Chat
 
 [Roket.Chat](https://github.com/RocketChat/Rocket.Chat) app for IndieHosters.
 
