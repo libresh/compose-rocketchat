@@ -6,10 +6,10 @@ db:
   command: mongod --smallfiles
 app:
   image: "rocket.chat"
-  env_file:
-    - ./.env
   environment:
     - MONGO_URL=mongodb://db:27017/meteor
+    - ROOT_URL
+    - MAIL_URL
   links:
     - db:db
   volumes:
