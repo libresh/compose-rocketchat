@@ -6,6 +6,7 @@ db:
   command: mongod --smallfiles
 app:
   image: "rocket.chat"
+  command: "/bin/bash -c 'sleep 20 && node main.js'"
   environment:
     - MONGO_URL=mongodb://db:27017/meteor
     - ROOT_URL
