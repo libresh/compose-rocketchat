@@ -19,7 +19,7 @@ services:
     restart: always
     environment:
       - MONGO_URL=mongodb://db:27017/meteor
-      - ROOT_URL
+      - ROOT_URL=https://${VIRTUAL_HOST}
       - MAIL_URL
     links:
       - db:db
