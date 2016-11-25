@@ -1,27 +1,41 @@
-db:
-  image: mongo
-  volumes:
-    - ./data/runtime/db:/data/db
-    - ./data/dump:/dump
-  command: mongod --smallfiles
-app:
-  image: "rocket.chat"
-  command: "/bin/bash -c 'sleep 20 && node main.js'"
-  restart: always
-  environment:
-    - MONGO_URL=mongodb://db:27017/meteor
-    - ROOT_URL
-    - MAIL_URL
-  links:
-    - db:db
-  volumes:
-    - ./logs:/home/app/logs
-    - ./data/uploads:/app/uploads
-web:
-  image: nginx
-  links:
-    - app
-  volumes:
-    - ./nginx.conf:/etc/nginx/nginx.conf:ro
-  environment:
-    - VIRTUAL_HOST
+version: '2'
+networks:
+  lb_web:
+    external: true
+  back:
+    driver: bridge
+services:
+  db:
+    image: mongo
+    volumes:
+      - ./data/runtime/db:/data/db
+      - ./data/dump:/dump
+    command: mongod --smallfiles
+    networks:
+    - back
+  app:
+    image: "rocket.chat"
+    command: "/bin/bash -c 'sleep 20 && node main.js'"
+    restart: always
+    environment:
+      - MONGO_URL=mongodb://db:27017/meteor
+      - ROOT_URL
+      - MAIL_URL
+    links:
+      - db:db
+    volumes:
+      - ./logs:/home/app/logs
+      - ./data/uploads:/app/uploads
+    networks:
+    - back
+  web:
+    image: nginx
+    links:
+      - app
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    environment:
+      - VIRTUAL_HOST
+    networks:
+    - back
+    - lb_web
