@@ -10,7 +10,7 @@ services:
     volumes:
       - ./data/runtime/db:/data/db
       - ./data/dump:/dump
-    command: mongod --smallfiles
+    command: mongod --smallfiles --oplogSize 128
     networks:
     - back
   app:
