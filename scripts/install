@@ -5,3 +5,4 @@ echo "SMTP_Username=${MAIL_USER}" >> env
 echo "MAIL_Password=${MAIL_PASS}" >> env
 echo "From_Email=${MAIL_USER}" >> env
 echo "MAIL_URL=smtp://${MAIL_USER}:${MAIL_PASS}@${MAIL_HOST}:${MAIL_PORT}/" >> env
+echo "SUBNET=${SUBNET}" >> env
