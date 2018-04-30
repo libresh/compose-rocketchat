@@ -10,7 +10,7 @@ networks:
       - subnet: 10.0.${SUBNET}.0/24
 services:
   db:
-    image: mongo:3.2
+    image: mongo:3.4
     volumes:
       - ./data/runtime/db:/data/db
       - ./data/dump:/dump
