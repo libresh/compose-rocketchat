@@ -1,3 +1,0 @@
-#!/bin/bash -eux
-
-docker-compose exec db bash -c "mongo meteor --eval 'db.users.find({roles:\"admin\"}, {_id:0, \"emails.address\":1})'" | cut -d ":" -f3 | grep -o '".*"' | tr -d '"';
